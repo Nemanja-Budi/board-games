@@ -1,0 +1,45 @@
+<div class="p-3 grid grid-cols-4 gap-5">
+    <div class="col-span-3">
+        <h2 class="text-center text-3xl font-bold">Korpa</h2>
+        <table class="w-full">
+            <thead>
+                <tr class="border-b border-b-slate-200">
+                    <th class="p-2">Slika</th>
+                    <th>Naziv</th>
+                    <th>Jedinicna cena</th>
+                    <th>Kolicina</th>
+                    <th>Cena</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cart of carts | async; let i = index" class="border-b border-b-slate-200">
+                    <td class="flex justify-center p-2">
+                        <img width="100dvh" src="../../assets/images/{{cart.game.imageURL}}" alt="{{cart.game.name}}">
+                    </td>
+                    <td>
+                        <a 
+                            routerLink="/game-detail/{{cart.game.id}}" 
+                            class="border-b border-b-blue-500 text-blue-500">
+                            {{cart.game.name}}
+                        </a>
+                    </td>
+                    <td>{{cart.game.price | number : '1.2-2' }} RSD</td>
+                    <td [ngClass]="{'text-red-500': cart.game.available_count < cart.count}">{{cart.count}}</td>
+                    <td>{{cart.game.price * cart.count | number : '1.2-2'}} RSD</td>
+                    <td>
+                        <button (click)="onRemoveCartItem(i)" class="text-white bg-blue-500 px-2 py-1 rounded-md"><span class="fa fa-remove"></span></button>
+                    </td>
+                </tr>
+                <tr class="w-full border-b border-slate-200">
+                    <td colspan="3"></td>
+                    <td colspan="1" class="p-2 font-bold">Ukupno: </td>
+                    <td colspan="2" class="font-bold">{{ukupnaCena | number : '1.2-2'}} RSD</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <app-cart-form [isEmpty]="isEmpty" [isAveleble]="isAveleble"></app-cart-form>
+    </div>  
+</div>

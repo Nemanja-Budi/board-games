@@ -1,0 +1,17 @@
+<div class="p-4 border border-slate-200 flex flex-col gap-3">
+    <div class="flex flex-col gap-3">
+        <label for="name">Naziv</label>
+        <input type="text" class="p-1 border border-slate-200 rounded-md" #searchText
+            (input)="onGetSearchText(searchText.value)">
+    </div>
+    <div class="flex flex-col gap-3">
+        <label for="cena">Cena(<span class="text-blue-500 font-bold">0.0</span>RSD - <span
+                class="text-blue-500 font-bold">100000</span>RSD)</label>
+        <input type="range" value="0" #priceFrom (change)="onGetPriceFrom(priceFrom.value)">
+        <input type="range" value="100" #priceTo (change)="onGetPriceTo(priceTo.value)">
+    </div>
+    <div class="flex gap-2">
+        <input type="checkbox" (change)="onGetChecked()">
+        <label for="cb">Samo dostupno</label>
+    </div>
+</div>

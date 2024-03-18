@@ -1,0 +1,10 @@
+<div class="p-3 border border-slate-200 flex flex-col gap-3 justify-between h-full">
+    <figure routerLink="/game-detail/{{game.id}}" class="border-b border-b-slate-200">
+        <img [ngClass]="{'w-[18dvh]': game.id == 1}" src="../../../../assets/images/{{game.imageURL}}"
+            alt="{{game.name}}">
+        <figcaption class="font-bold text-center text-xl">{{game.name}}</figcaption>
+    </figure>
+    <div class="w-[60%] mx-auto">
+        <app-game-form [game]="game"></app-game-form>
+    </div>
+</div>

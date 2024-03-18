@@ -1,0 +1,12 @@
+<div>
+    <p class="text-center w-[{{width}}] mx-auto"
+        [ngClass]="{'font-bold': game.available_count > 0, 'text-red-500': game.available_count <= 0}">
+        {{game.available_count > 0 ? (game.price | number:'1.2-2') + ' RSD' : 'Nije dostupno'}}</p>
+    <form [formGroup]="cartForm" (ngSubmit)="onSubmit()" class="grid grid-cols-4">
+        <input type="number" formControlName="count"
+            class="col-span-3 border border-slate-200 rounded-tl-md rounded-bl-md p-1">
+        <button [disabled]="game.available_count <= 0"
+            class="bg-blue-500 text-white p-1 rounded-tr-md rounded-br-md"><span
+                class="fa fa-shopping-cart"></span></button>
+    </form>
+</div>

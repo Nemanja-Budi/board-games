@@ -1,0 +1,11 @@
+<div class="grid grid-cols-4 ">
+    <div class="col-span-3"></div>
+    <div>
+        <select name="sorting" id="sorting" #sortingSelect (change)="onGetSortingSelect(sortingSelect.value)"
+            class="col-span-1 border w-full border-slate-200 p-1.5 rounded-md">
+            <option value="">Bez sortiranja</option>
+            <option value="asc">Cena rastuca</option>
+            <option value="desc">Cena opadajuca</option>
+        </select>
+    </div>
+</div>

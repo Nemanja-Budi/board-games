@@ -1,0 +1,54 @@
+<div *ngIf="game | async as gameData" class="p-4">
+    <h2 class="text-center text-3xl font-bold ">{{gameData.name}}</h2>
+    <div class="grid grid-cols-2">
+        <div class="flex flex-col gap-3">
+            <figure class="flex justify-center">
+                <img width="250dvh" src="../../../assets/images/{{gameData.imageURL}}" alt="">
+            </figure>
+            <h3 class="text-center text-xl font-bold">Opis</h3>
+            <p>{{gameData.description}}</p>
+        </div>
+        <div class="p-5 flex flex-col gap-4">
+            <div class="w-40">
+                <app-game-form [game]="gameData" [width]="'full'"></app-game-form>
+            </div>
+            <div>
+                <table class="w-full">
+                    <tr class="border-b border-b-slate-200 grid grid-cols-2 items-center">
+                        <th class="p-2">Prosecno trajanje partije</th>
+                        <td>{{gameData.playtime}}</td>
+                    </tr>
+                    <tr class="border-b border-b-slate-200 grid grid-cols-2 items-center">
+                        <th class="p-2">Uzrast</th>
+                        <td>{{gameData.min_age}}+</td>
+                    </tr>
+                    <tr class="border-b border-b-slate-200 grid grid-cols-2 items-center">
+                        <th class="p-2">Broj igraca</th>
+                        <td>{{gameData.min_players}} - {{gameData.max_players}}</td>
+                    </tr>
+                    <tr class="border-b border-b-slate-200 grid grid-cols-2 items-center">
+                        <th class="p-2">Komplekstnost</th>
+                        <td>{{gameData.complexity}}</td>
+                    </tr>
+                    <tr class="border-b border-b-slate-200 grid grid-cols-2 items-center">
+                        <th class="p-2">Mehanike igre</th>
+                        <td>
+                            <ul *ngFor="let mehanic of gameData.mechanics" class="flex flex-col gap-3">
+                                <li><a>{{mehanic}}</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-b-slate-200 grid grid-cols-2 items-center">
+                        <th class="p-2">Dizajner</th>
+                        <td>{{gameData.designer}}</td>
+                    </tr>
+                    <tr class="border-b border-b-slate-200 grid grid-cols-2 items-center">
+                        <th class="p-2">Izdavac</th>
+                        <td>{{gameData.publisher}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

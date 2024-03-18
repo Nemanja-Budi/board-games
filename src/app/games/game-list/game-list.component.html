@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col">
+        <h2 class="fw-bold text-center my-4 text-3xl">Društvene igre</h2>
+    </div>
+
+</div>
+<div class="grid grid-cols-4 h-[80dvh] gap-5">
+    <div>
+        <app-game-filtering></app-game-filtering>
+    </div>
+    <div class="col-span-3 grid grid-rows-[auto,1fr] gap-5">
+        <div>
+            <app-game-sorting></app-game-sorting>
+        </div>
+        <div class="grid grid-cols-4 gap-5">
+            <app-game-item *ngFor="let game of games | async" [game]="game"></app-game-item>
+        </div>
+    </div>
+</div>
